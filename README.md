@@ -1,58 +1,52 @@
-# TEPSUP APACHE KAFKA
-Demostración de uso de Apache Kafka
+# TECSUP_MS_LOGS - Microservicio para registro de Logs
+Este proyecto es un microservicio RESTful desarrollado con Java Spring Boot encargado del registro de logs para diferenes aplicaciones. Está diseñado para ser desplegado fácilmente mediante Docker y utiliza PostgreSQL como motor de base de datos.
 
-## Instalación
+## Tecnologías
+* **Lenguaje:** Java 17+
+* **Framework:** Spring Boot (Web, JPA, Validation)
+* **Base de Datos:** PostgreSQL
+* **Herramientas:** Maven, Docker
+* **Manejador de eventos:** Apache Kafka
 
+## Instalación con Docker
+
+1. Asegúrate de tener Docker instalado.
+2. Clonar el repositorio
+   ```bash
+   git clone https://github.com/aanampa/TECSUP_MS_LOGS.git
+
+   # ingresar a carpeta del proyecto
+   cd TECSUP_MS_LOGS
+   ```
+
+4.  Ejecuta el siguiente comando en la raíz del proyecto:
+    ```bash
+    docker-compose up --build -d
+    ```
+5.  Verifica que los contenedores estén corriendo:
+    ```bash
+    docker ps
+    ```
+6.  Compilar aplicacion java
+    ```bash
+    ./mvnw clean install
+    ```
+7.  Ejecutar aplicacion java
+    ```bash
+    ./mvnw spring-boot:run
+    ```
+## Ejecución
+
+* Listar logs:
+GET http://localhost:8065/api/logs
+
+* Registrar logs:
+POST http://localhost:8065/api/logs/registrar
 ```bash
-# Clonar el repositorio
-git clone https://github.com/aanampa/TEPSUP_APACHE_KAFKA.git
-
-# Navegar al directorio del repositorio
-cd TEPSUP_APACHE_KAFKA
-
-# Iniciar servicios
-docker-compose up -d
-
-# Verificar que PostgreSQL esté listo
-docker logs postgres-db
-
-# Compilar API
-mvn clean install
-
-# Ejecutar la aplicación API
-mvn spring-boot:run
-
+{
+  "sistema": "DEMO2025",
+  "entidad": "LIMA",
+  "identificador": "111",
+  "contenido":"contenido 122"
+}
 ```
-## Ejemplo de Uso
-```
-# Listar estudiantes
-curl http://localhost:8081/api/estudiantes
-
-# Registrar estudiantes
-curl -X POST http://localhost:8081/api/estudiantes \
-  -H "Content-Type: application/json" \
-  -d '{
-    "nombre": "Carlos",
-    "apellido": "Pérez García",
-    "dni": "12345678B",
-    "email": "carlos.perez@test.com",
-    "telefono": "666111222",
-    "fechaNacimiento": "2000-05-15",
-    "direccion": "Calle Test 123",
-    "activo": true
-  }'
-
-# Listar mensajes
-curl http://localhost:8081/api/logs
-```
-## Kafka UI
-### Abrir la siguente ruta en el navgador
-<a href="http://localhost:8090" target="_blank">http://localhost:8090</a>
-
-```
-- Ir a Topics
-- Ir a mensajes-topic
-- Ir a Messages
-```
-
-
