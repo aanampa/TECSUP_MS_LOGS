@@ -7,7 +7,7 @@ Este proyecto es un microservicio RESTful desarrollado con Java Spring Boot enca
 * **Framework:** Spring Boot (Web, JPA, Validation)
 * **Base de Datos:** PostgreSQL
 * **Herramientas:** Maven, Docker
-* **Manejador de eventos:** Apache Kafka
+* **Broker de Mensajería:** Apache Kafka
 
 ## Instalación con Docker
 
